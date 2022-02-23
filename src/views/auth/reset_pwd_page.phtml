@@ -1,0 +1,20 @@
+<?php
+session_start();
+require_once $dimport["auth/accept_unauth.php"]["path"];
+require_once $dimport["security/csrf_prevent.php"]["path"];
+
+$title = "Reset Password";
+require_once $dimport["layouts/header.phtml"]["path"]; ?>
+
+<form class="theme-box card-box block-middle" action="<?= $dimport['user/reset_pwd_request.php']['redirect'] ?>" method="POST">
+    <div class="main-title card-title"> Password Reset </div>
+    <div class="card-section">
+        <input class="main-input card-input block-middle" name="email" type="email" placeholder="email" required>
+        <input class="main-input card-input block-middle" name="password-new" type="password" placeholder="new password" pattern=".{7,}" required>
+        <input class="main-input card-input block-middle" name="password-confirm" type="password" placeholder="new password (repeat)" pattern=".{7,}" required>
+    </div>
+    <?= $csrf_form_get ?>
+    <button class="main-button card-button" type="submit" name="submit"> Update </button>
+</form>
+
+<?php require_once $dimport["layouts/footer.phtml"]["path"];

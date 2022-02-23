@@ -1,0 +1,14 @@
+.post-title {
+    padding: var(--space-m);
+
+    font-size: var(--font-l);
+    text-align: center;
+}
+
+.post-page-cont {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: var(--space-l);
+}
+
+.post-textarea { height: 250px; }

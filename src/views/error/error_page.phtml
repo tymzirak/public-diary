@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title> Public Diary | <?= $title ?> </title>
+
+    <link type="text/css" rel="stylesheet" href="/style/theme.css">
+    <link type="text/css" rel="stylesheet" href="/style/main.css">
+    <link type="text/css" rel="stylesheet" href="/style/error.css">
+</head>
+<body>
+    <div class="error-cont">
+        <p class="main-title error-title"> <?= $title ?> </p>
+        <img class="error-img" src="<?= $error_img ?>">
+        <a href="<?= $dimport['home/home_page.phtml']['redirect'] ?>"> <p> Go back home? </p> </a>
+    </div>
+</body>
+</html>

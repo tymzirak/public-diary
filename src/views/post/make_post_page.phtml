@@ -1,0 +1,40 @@
+<?php
+session_start();
+require_once $dimport["auth/accept_auth.php"]["path"];
+require_once $dimport["security/csrf_prevent.php"]["path"];
+
+$title = "Post";
+require_once $dimport["layouts/header.phtml"]["path"];
+
+if (!empty($_GET["post-id"])) {
+	require_once $dimport["db/db_funcs.php"]["path"];
+
+	$post = $records_get("post", "post_id", $_GET["post-id"]);
+	if (empty($post))
+		redirect($dimport["home/home_page.phtml"]["redirect"]."&error=no-such-post");
+	$post = $post[0];
+
+	if ($post["user_id"] != $_SESSION["u_id"])
+		redirect($dimport["home/home_page.phtml"]["redirect"]."&error=not-your-post");
+
+	$title  = str_replace("~_", "\n", $post["title"]);
+	$text   = str_replace("~_", "\n", $post["text"]);
+}
+
+if (empty($title) || empty($text)) {
+	$action = $dimport['post/make_post.php']['redirect'];
+	$title  = "";
+	$text   = "";
+} else $action = $dimport['post/edit_post.php']['redirect']."&post-id=".$post['post_id']; ?>
+
+<form class="theme-box main-cont thin-cont block-middle" action="<?= $action ?>" method="POST">
+    <div class="main-title card-title"> Make a Post </div>
+    <div class="card-section">
+        <input class="main-input card-input block-middle" name="title" value="<?= $title ?>" placeholder="title" pattern=".{0,100}" required>
+        <textarea class="main-input main-textarea card-input post-textarea block-middle" name="text" placeholder="text" pattern=".{0,10000}" required><?= $text ?></textarea>
+    </div>
+    <?= $csrf_form_get ?>
+    <button class="main-button card-button" type="submit" name="submit"> Post </button>
+</form>
+
+<?php require_once $dimport["layouts/footer.phtml"]["path"];

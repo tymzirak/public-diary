@@ -1,0 +1,22 @@
+<?php
+session_start();
+require_once $dimport["auth/accept_unauth.php"]["path"];
+require_once $dimport["security/csrf_prevent.php"]["path"];
+
+$title = "Login";
+require_once $dimport["layouts/header.phtml"]["path"]; ?>
+
+<form class="theme-box card-box block-middle" action="<?= $dimport['auth/login.php']['redirect'] ?>" method="POST">
+    <div class="main-title card-title"> Login to Your Account </div>
+    <div class="card-section">
+        <input class="main-input card-input block-middle" name="username" placeholder="username" pattern="[a-zA-Z0-9_-]{3,20}" required>
+        <input class="main-input card-input block-middle" name="password" type="password" placeholder="password" pattern=".{7,}" required>
+    </div>
+    <div class="card-info-text">
+        <a href="<?= $dimport['auth/reset_pwd_page.phtml']['redirect'] ?>"> Forgot password? </a>
+    </div>
+    <?= $csrf_form_get ?>
+    <button class="main-button card-button" type="submit" name="submit"> Login </button>
+</form>
+
+<?php require_once $dimport["layouts/footer.phtml"]["path"];

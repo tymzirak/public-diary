@@ -1,0 +1,11 @@
+<form class="post-delete-form" style="display: none;" action="<?= $dimport['post/delete_post.php']['redirect'] ?>" method="POST">
+    <input name="media-id" type="text">
+    <?= $csrf_form_get ?>
+    <button name="submit" type="submit"></button>
+</form>
+
+<form class="post-like-form" style="display: none;" action="<?= $dimport['post/like_post.php']['redirect'] ?>" method="POST">
+    <input name="media-id" type="text">
+    <?= $csrf_form_get ?>
+    <button name="submit" type="submit"></button>
+</form>

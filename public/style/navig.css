@@ -1,0 +1,69 @@
+.main-nav {
+    z-index: 2;
+    position: fixed;
+
+    width: 60px;
+    height: 100%;
+
+    background-color: var(--theme-color);
+
+    overflow: hidden;
+    transition: 0.3s ease-in-out;
+}
+.main-nav:hover, .main-nav-btn:focus + .main-nav { width: 260px; }
+
+.main-nav-bottom {
+    position: absolute;
+
+    bottom: 0;
+}
+
+.main-nav-item {
+    margin: 10px;
+    padding: 20px 0px 20px 60px;
+    background-size: 40px;
+
+    list-style: none;
+    color: black;
+
+    font-size: var(--font-m);
+
+    background-repeat: no-repeat;
+    background-position: left center;
+    transition: 0.1s ease-in-out;
+}
+.main-nav-item:hover {
+    background-size: 45px;
+
+    font-size: var(--font-l);
+}
+
+.main-nav-btn {
+    z-index: 1;
+    position: fixed;
+    display: none;
+
+    padding: var(--space-m);
+
+    background-color: var(--back-color-d);
+    border: 1px var(--back-color-l) solid;
+    border-radius: var(--radius-s);
+    opacity: .6;
+
+    font-size: var(--font-l);
+
+    cursor: pointer;
+}
+.main-nav-btn:hover { opacity: 1; }
+
+.main-nav-home { background-image: url("/img/icons/home-icon.png"); }
+
+.main-nav-profile { background-image: url("/img/icons/profile-icon.png"); }
+
+.main-nav-post { background-image: url("/img/icons/post-icon.png"); }
+
+.main-nav-login { background-image: url("/img/icons/login-icon.png"); }
+
+.main-nav-logout { background-image: url("/img/icons/logout-icon.png"); }
+
+.main-nav-signup { background-image: url("/img/icons/signup-icon.png"); }

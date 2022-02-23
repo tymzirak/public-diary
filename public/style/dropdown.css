@@ -1,0 +1,29 @@
+.dropdown {
+    display: inline-block;
+    position: relative;
+    
+    cursor: pointer;
+}
+.dropdown:focus-within .dropdown-btn { background-color: var(--theme-color); }
+.dropdown:focus-within .dropdown-cont { display: block; }
+
+.dropdown-btn { padding: var(--space-m); }
+
+.dropdown-cont {
+    z-index: 1;
+    display: none;
+    position: absolute;
+
+    padding: 0;
+    margin: 0;
+
+    background-color: var(--theme-color);
+    list-style: none;
+    border-top: none;
+}
+
+.dropdown-item {
+    padding: var(--space-m);
+    padding-right: 40px;
+}
+.dropdown-item:hover { background-color: var(--theme-color-d); }

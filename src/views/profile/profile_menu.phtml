@@ -1,0 +1,40 @@
+<?php
+$post_like_amt     = "SELECT count(*) AS like_amt
+                      FROM post_like JOIN post
+                      ON post_like.post_id = post.post_id
+                      AND post.user_id = ?;";
+$comment_like_amt  = "SELECT count(*) AS like_amt
+                      FROM comment_like JOIN comment
+                      ON comment_like.comment_id = comment.comment_id
+                      AND comment.user_id = ?;";
+
+$post_like_amt     = $sql_query($post_like_amt, [$user["user_id"]])[0]["like_amt"];
+$comment_like_amt  = $sql_query($comment_like_amt, [$user["user_id"]])[0]["like_amt"];
+
+$like_amt = $post_like_amt + $comment_like_amt; ?>
+
+<div class="theme-box page-item main-cont-item">
+    <div class="main-title profile-title"> <?= $user['username'] ?> </div>
+    <div class="profile-section">
+        <div class="main-section main-menu-bar">
+            <img class="main-menu-bar-icon invert-icon" src="/img/icons/cake-icon.png" alt="">
+            <b class="main-menu-bar-key"> Registered </b>
+            <div class="main-menu-bar-value date"> <?= $user['user_dt'] ?> </div>
+        </div>
+        <div class="main-section main-menu-bar">
+            <img class="main-menu-bar-icon invert-icon" src="/img/icons/like-checked-icon.png" alt="">
+            <b class="main-menu-bar-key"> Likes </b>
+            <div class="main-menu-bar-value"> <?= $like_amt; ?> </div>
+        </div>
+    </div>
+    <div class="main-menu-nav">
+        <?php if (!empty($_SESSION["u_id"]) && $user["user_id"] == $_SESSION["u_id"]) { ?>
+            <a href="<?= $dimport["home/settings_page.phtml"]["redirect"] ?>">
+                <button class='main-button card-button'> Settings </button>
+            </a>
+        <?php } ?>
+        <a href="<?= $dimport['comment/comment_page.phtml']['redirect']."&user-id=".$user['user_id'] ?>">
+            <button class='main-button card-button'> Comments </button>
+        </a>
+    </div>
+</div>

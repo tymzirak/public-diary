@@ -1,0 +1,8 @@
+.profile-title {
+    margin: var(--space-l);
+
+    font-size: var(--font-m);
+    text-align: center;
+}
+
+.profile-section { margin: var(--space-l) var(--space-m); }

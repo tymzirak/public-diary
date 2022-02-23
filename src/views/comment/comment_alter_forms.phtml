@@ -1,0 +1,11 @@
+<form class="comment-delete-form" style="display: none;" action="<?= $dimport['comment/delete_comment.php']['redirect'] ?>" method="POST">
+    <input name="media-id" type="text">
+    <?= $csrf_form_get ?>
+    <button name="submit" type="submit"></button>
+</form>
+
+<form class="comment-like-form" style="display: none;" action="<?= $dimport['comment/like_comment.php']['redirect'] ?>" method="POST">
+    <input name="media-id" type="text">
+    <?= $csrf_form_get ?>
+    <button name="submit" type="submit"></button>
+</form>

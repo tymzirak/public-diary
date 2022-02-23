@@ -1,0 +1,19 @@
+.settings-cont { padding: var(--space-l); }
+
+.settings-title {
+    font-size: var(--font-l);
+    text-align: center;
+}
+
+.settings-text { padding-bottom: var(--space-l); }
+
+.settings-section { margin-bottom: 40px; }
+
+.settings-menu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+}
+
+.settings-menu-item { margin: var(--space-l); }
+
+.settings-input { margin-top: var(--space-m); }

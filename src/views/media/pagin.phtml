@@ -1,0 +1,16 @@
+<?php
+$query_next = "SELECT * FROM $table
+               $filter_query
+               ORDER BY $order_by DESC
+               LIMIT ".($pagin_start+$pagin_amt).",1;";
+
+if (empty($search)) $search = "";
+$next = $sql_query($query_next, [$search, $search]); ?>
+
+<div class="pagin-cont">
+    <?php if ($pagin_page > 0) { ?>
+        <img class="pagin-arrow pagin-prev invert-icon" src="/img/icons/arrow-icon.png">
+    <?php } if (count($next) > 0) { ?>
+        <img class="pagin-arrow pagin-next invert-icon" src="/img/icons/arrow-icon.png">
+    <?php } ?>
+</div>

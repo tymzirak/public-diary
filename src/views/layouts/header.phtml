@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title> Public Diary | <?= $title ?> </title>
+
+    <link rel="icon" href="/img/icons/logo.png">
+
+    <link rel="stylesheet" href="/style/reset.css">
+    <link rel="stylesheet" href="/style/theme.css">
+    <link rel="stylesheet" href="/style/page.css">
+    <link rel="stylesheet" href="/style/main.css">
+    <link rel="stylesheet" href="/style/navig.css">
+    <link rel="stylesheet" href="/style/dropdown.css">
+    <link rel="stylesheet" href="/style/media.css">
+    <link rel="stylesheet" href="/style/post.css">
+    <link rel="stylesheet" href="/style/comment.css">
+    <link rel="stylesheet" href="/style/poll.css">
+    <link rel="stylesheet" href="/style/profile.css">
+    <link rel="stylesheet" href="/style/pagin.css">
+    <link rel="stylesheet" href="/style/card.css">
+    <link rel="stylesheet" href="/style/settings.css">
+    <link rel="stylesheet" href="/style/error.css">
+    <link rel="stylesheet" href="/style/media_query.css">
+</head>
+<body>
+    <div class="page-temp-main">
+        <div class="main-nav-btn" tabindex="0">• • •</div>
+        <nav class="main-nav">
+            <a href="/index.php?page=home/home_page.phtml">
+                <div class="main-nav-item main-nav-home"> Home </div>
+            </a>
+            <?php if (isset($_SESSION["u_id"])) { ?>
+                <a href="/index.php?page=profile/profile_page.phtml&user-id=<?= $_SESSION["u_id"] ?>">
+                    <div class="main-nav-item main-nav-profile"> Profile </div>
+                </a>
+                <a href="/index.php?page=post/make_post_page.phtml">
+                    <div class="main-nav-item main-nav-post"> Post </div>
+                </a>
+            <?php } ?>
+            <div class="main-nav-bottom">
+                <?php if (isset($_SESSION["u_id"])) { ?>
+                    <a href="/index.php?page=auth/logout.php">
+                        <div class="main-nav-item main-nav-logout"> Logout </div>
+                    </a>
+                <?php } else { ?>
+                    <a href="/index.php?page=auth/login_page.phtml">
+                        <div class="main-nav-item main-nav-login"> Login </div>
+                    </a>
+                    <a href="/index.php?page=auth/signup_page.phtml">
+                        <div class="main-nav-item main-nav-signup"> Signup </div>
+                    </a>
+                <?php } ?>
+            </div>
+        </nav>
+
+        <main class="main-cont">

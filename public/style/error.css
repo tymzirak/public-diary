@@ -1,0 +1,12 @@
+.error-title { font-size: var(--font-l); }
+
+.error-img {
+    width: 400px;
+
+    border: var(--font-color) 2px solid;
+}
+
+.error-cont {
+    padding: var(--space-m);
+    text-align: center;
+}

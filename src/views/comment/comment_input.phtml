@@ -1,0 +1,27 @@
+<?php
+$text = "";
+if (!empty($_GET["comment-id"])) {
+	require_once $dimport["db/db_funcs.php"]["path"];
+
+	$comment = $records_get("comment", "comment_id", $_GET["comment-id"]);
+	if (empty($comment))
+		redirect($dimport["home/home_page.phtml"]["redirect"]."&error=invalid-comment");
+	$comment = $comment[0];
+
+	if ($comment["user_id"] != $_SESSION["u_id"])
+		redirect($dimport["home/home_page.phtml"]["redirect"]."&error=invalid-comment");
+
+	$text = str_replace("~_", "\n", $comment["text"]);
+}
+
+if (empty($text)) {
+	$action  = $dimport['comment/make_comment.php']['redirect'];
+	$text    = "";
+} else $action = $dimport['comment/edit_comment.php']['redirect']."&comment-id=".$comment['comment_id']; ?>
+
+<form class="theme-box make-comment-cont" action="<?= $action ?>" method="POST">
+    <textarea class="main-input main-textarea comment-textarea block-middle" name="text" placeholder="add a comment..." pattern=".{0,8000}" required><?= $text ?></textarea>
+	<input type="hidden" name="post-id" value="<?= $post["post_id"] ?>">
+	<?= $csrf_form_get ?>
+	<button class="main-button media-button block-right" type="submit" name="submit"> Comment </button>
+</form>

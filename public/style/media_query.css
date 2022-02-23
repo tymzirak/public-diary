@@ -1,0 +1,23 @@
+@media screen and (max-width: 70rem) {
+    .main-cont-col--3 { display: none; }
+
+    .post-page-cont { grid-template-columns: 1fr 1fr; }
+
+    .thin-cont { width: 90%; }
+}
+
+@media screen and (max-width: 50rem) {
+    .main-cont-col--2 { display: none; }
+
+    .post-page-cont { grid-template-columns: 1fr; }
+
+    .main-cont { grid-column: 1/3; }
+
+    .main-nav { width: 0; }
+
+    .main-nav-btn { display: block; }
+
+    .thin-cont { width: 100%; }
+
+    .settings-input { width: 100%; }
+}

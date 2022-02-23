@@ -1,0 +1,13 @@
+.page-temp-main {
+    display: grid;
+    grid-template-columns: 1fr 8fr;
+}
+
+.main-cont {
+    grid-column: 2/3;
+    margin: var(--space-m);
+}
+
+.thin-cont { width: 70%; }
+
+.page-item { margin-bottom: var(--space-l); }
